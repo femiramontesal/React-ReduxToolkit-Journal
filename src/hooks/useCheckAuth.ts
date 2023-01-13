@@ -1,11 +1,11 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 import { FirebaseAuth } from "../firebase/config";
 import { login, logout } from "../store/auth";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 export const useCheckAuth = () => {
-  const { status } = useAppSelector((state) => state.auth);
+  const { status, displayName } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const useCheckAuth = () => {
   }, []);
 
   return {
-    status,
+    status, displayName
   };
-  
+
 };

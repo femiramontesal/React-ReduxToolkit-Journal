@@ -12,8 +12,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/material";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
 
 export const SideBar = ({ children, drawerWidth }: any) => {
+  const { displayName } = useCheckAuth();
   return (
     <Box
       component="nav"
@@ -29,7 +31,7 @@ export const SideBar = ({ children, drawerWidth }: any) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component={"div"}>
-            Fernando
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
@@ -42,11 +44,7 @@ export const SideBar = ({ children, drawerWidth }: any) => {
                 </ListItemIcon>
                 <Grid container>
                   <ListItemText primary={text} />
-                  <ListItemText
-                    secondary={
-                      "Lorem ipsum dolor sit amet"
-                    }
-                  />
+                  <ListItemText secondary={"Lorem ipsum dolor sit amet"} />
                 </Grid>
               </ListItemButton>
             </ListItem>
